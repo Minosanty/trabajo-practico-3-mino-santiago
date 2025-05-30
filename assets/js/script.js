@@ -1,4 +1,4 @@
-const API_BASE = "https://dragonball-api.com/api/characters?limit=57";
+const API_BASE = "https://dragonball-api.com/api/characters?limit=";
 const btnBuscar = document.getElementById("btnBuscar");
 const contenedorPadre = document.getElementById("contenedordata");
 const campoEntrada = document.getElementById("campoentrada");
