@@ -1,7 +1,8 @@
-const API_BASE = "https://dragonball-api.com/api/characters?limit=";
-const btnBuscar = document.getElementById("btnBuscar");
+const API_BASE = "https://dragonball-api.com/api/characters?limit=57";
+const btnmostrar = document.getElementById("btnmostrar");
 const contenedorPadre = document.getElementById("contenedordata");
 const campoEntrada = document.getElementById("campoentrada");
+const verMas = document.getElementById("verMas");
 
 const cargarDatos = async (url) => {
   try {
@@ -23,13 +24,14 @@ const verDetalles = async (id) => {
       throw new Error("Error en la API");
     }
     const data = await response.json();
-    alert(data.description || "Sin descripción");
+
+    alert(data.description);
   } catch (error) {
     console.log(error);
   }
 };
 
-btnBuscar.addEventListener("click", async () => {
+btnmostrar.addEventListener("click", async () => {
   contenedorPadre.innerHTML = ""; // Limpia el contenedor
   const data = await cargarDatos(API_BASE);
 
@@ -38,9 +40,10 @@ btnBuscar.addEventListener("click", async () => {
 
   console.log(personajes);
 
+
   personajes.forEach((personaje) => {
     contenedorPadre.innerHTML += `
-     <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3 d-flex justify-content-center">
+     <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3 d-flex justify-content-center" data-id="${personaje.id}">
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="${personaje.image}" alt="${personaje.name}" />
           <div class="card-body">
@@ -48,7 +51,11 @@ btnBuscar.addEventListener("click", async () => {
             <p class="card-text">
               <strong>Raza:</strong> ${personaje.race}<br>
               <strong>Género:</strong> ${personaje.gender}<br> 
-              <strong>Ki:</strong> ${personaje.ki}
+            
+              <div class="center" role="search">
+                        <center> <button class="btn btn-primary btn-ver-detalles"> ver mas </button> </center>
+            </div>
+            
             </p>
           </div>
         </div>
@@ -57,11 +64,13 @@ btnBuscar.addEventListener("click", async () => {
   });
 });
 
+
 contenedorPadre.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-ver-detalles")) {
-    const card = e.target.closest("[data-id]");
+    const card = e.target.closest(".col-12");
     const id = card.getAttribute("data-id");
+    console.log(id)
     verDetalles(id);
   }
 });
-
+ 
