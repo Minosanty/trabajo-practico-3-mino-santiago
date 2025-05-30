@@ -1,0 +1,20 @@
+/* Estilo general del body con imagen de fondo */
+body {
+    background-image: url("../imagenes/fondo-base.jpg");
+    background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        /* Esto lo deja fijo al hacer scroll */
+        background-position: center center;
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Navbar con fondo semitransparente */
+    .navbar {
+        background-color: rgba(255, 255, 255, 0) !important;
+    }
+    
