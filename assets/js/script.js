@@ -1,4 +1,5 @@
 const API_BASE = "https://dragonball-api.com/api/characters?limit=57";
+const API_Busqueda = "https://dragonball-api.com/api/characters?name=";
 const btnmostrar = document.getElementById("btnmostrar");
 const contenedorPadre = document.getElementById("contenedordata");
 const campoEntrada = document.getElementById("campoentrada");
@@ -64,6 +65,40 @@ btnmostrar.addEventListener("click", async () => {
   });
 });
 
+// Botón buscar
+btnBuscar.addEventListener("click", async (e) => {
+  e.preventDefault();
+  contenedorPadre.innerHTML = "";
+
+
+  const terminoBusqueda = campoEntrada.value.trim().toLowerCase();
+  const personajes = await cargarDatos(API_Busqueda + terminoBusqueda);
+console.log(personajes)
+
+
+  if (personajes.length === 0) {
+    contenedorPadre.innerHTML = `<p class="text-center text-danger">No se encontraron personajes.</p>`;
+    return;
+  }
+personajes.forEach((personaje) => {
+    contenedorPadre.innerHTML += `
+     <div class="col-12 col-sm-6 col-md-4 col-lg-3 pb-3 d-flex justify-content-center" data-id="${personaje.id}">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="${personaje.image}" alt="${personaje.name}" />
+          <div class="card-body">
+            <h5 class="card-title">${personaje.name}</h5>
+            <p class="card-text">
+              <strong>Raza:</strong> ${personaje.race}<br>
+              <strong>Género:</strong> ${personaje.gender}<br> 
+            
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+ });
 
 contenedorPadre.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-ver-detalles")) {
@@ -73,4 +108,3 @@ contenedorPadre.addEventListener("click", (e) => {
     verDetalles(id);
   }
 });
- 
