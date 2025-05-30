@@ -18,3 +18,26 @@ body {
         background-color: rgba(255, 255, 255, 0) !important;
     }
     
+    /* Contenedor de tarjetas centrado y con espacio */
+    #contenedordata {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 2rem;
+    }
+    
+    /* Tarjetas uniformes */
+    .card {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        width: 220px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: scale(1.05);
+    }

@@ -57,4 +57,11 @@ btnBuscar.addEventListener("click", async () => {
   });
 });
 
+contenedorPadre.addEventListener("click", (e) => {
+  if (e.target.classList.contains("btn-ver-detalles")) {
+    const card = e.target.closest("[data-id]");
+    const id = card.getAttribute("data-id");
+    verDetalles(id);
+  }
+});
 
