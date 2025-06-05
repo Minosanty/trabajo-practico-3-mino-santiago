@@ -29,12 +29,12 @@ body {
     
     /* Tarjetas uniformes */
     .card {
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: rgba(255, 255, 255, 0.74);
         border-radius: 12px;
         width: 220px;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.719);
         transition: transform 0.3s ease;
     }
     
